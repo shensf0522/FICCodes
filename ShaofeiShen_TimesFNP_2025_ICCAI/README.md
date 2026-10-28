@@ -9,6 +9,8 @@
 
 TimesFNP improves long-horizon financial time-series forecasting under heavy noise by combining contrastive representation learning with a Transformer forecaster. A noise-based augmentation module builds positive views (frequency-adaptive sampling that keeps the dominant spectral components) and negative views (noise drawn from a mixture of Gaussian / uniform / lognormal distributions). Two InfoNCE objectives shape the representation: a temporal-wise loss that separates trend from noise within each series, and an instance-wise loss that pulls together companies from the same industry while pushing apart different industries (momentum-spillover intuition). A patch-based Transformer encoder–decoder then produces the multi-step forecast, with macroeconomic covariates fused into the decoder. The implementation in this folder is the code for the ICCAI 2025 paper, covering data preparation, training and evaluation.
 
+![Model framework](figures/framework.png)
+
 ## Code map
 
 | File | Content |
@@ -24,6 +26,7 @@ TimesFNP improves long-horizon financial time-series forecasting under heavy noi
 | `data/extract_macro.py` | Extracts the 8 Welch–Goyal macro variables and the monthly risk-free rate from the official spreadsheet. |
 | `data/fast_download.py` | Resumable multi-thread downloader for the 1.5 GB datashare archive (optional helper for slow networks). |
 | `run_experiments.sh` | Runs the main experiment pair (base vs. TimesFNP) sequentially. |
+| `figures/framework.png` | Model framework figure (Fig. 1 of the paper). |
 
 ## Environment
 
